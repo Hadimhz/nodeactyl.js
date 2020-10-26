@@ -1,0 +1,15 @@
+{
+  "name": "nodeactyl.js",
+  "version": "0.3.0",
+  "description": "API wrapper for Pterodactyl.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "Hadi Mahfouz",
+  "license": "MIT",
+  "dependencies": {
+    "node-fetch": "^2.6.1"
+  }
+}
