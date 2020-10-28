@@ -17,16 +17,18 @@ function createUser(ID) {
             },
         });
 
-        let data = await res.json().catch(x => resolve({
-            success: true,
-            info: {
-                startedAt: start,
-                endedAt: Date.now(),
-            }
-        }));
+        let data = await res.json().catch(x => {
+            return resolve({
+                success: true,
+                info: {
+                    startedAt: start,
+                    endedAt: Date.now(),
+                }
+            })
+        });
 
         if (data != null && data.errors != null) {
-            resolve({
+            return resolve({
                 success: false,
                 error: (data.errors.length == 1 ? data.errors[0] : data.errors),
                 info: {

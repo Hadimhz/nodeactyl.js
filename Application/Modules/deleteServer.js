@@ -6,8 +6,8 @@ const fetch = require('node-fetch');
  */
 
 function createUser(ID, force) {
-    if(ID == null) ID = 0;
-    if(force == null) force = false;
+    if (ID == null) ID = 0;
+    if (force == null) force = false;
 
     let cred = require('../Application').cred();
     let start = Date.now();
@@ -22,16 +22,18 @@ function createUser(ID, force) {
             },
         });
 
-        let data = await res.json().catch(x => resolve({
-            success: true,
-            info: {
-                startedAt: start,
-                endedAt: Date.now(),
-            }
-        }));
+        let data = await res.json().catch(x => {
+            return resolve({
+                success: true,
+                info: {
+                    startedAt: start,
+                    endedAt: Date.now(),
+                }
+            })
+        });
 
         if (data != null && data.errors != null) {
-            resolve({
+            return resolve({
                 success: false,
                 error: (data.errors.length == 1 ? data.errors[0] : data.errors),
                 info: {

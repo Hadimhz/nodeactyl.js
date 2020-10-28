@@ -6,12 +6,15 @@ const {
 
 /**
  * 
- * @param {Number} ID User ID you're trying to fetch.
+ * @param {Number} ID Location ID you're trying to fetch.
  * @param {Object}  [options] What to include with request.
- * @param {Boolean} [options.servers] Include all serrvers owned by that user.
+ * @param {Boolean} [options.nodes] List of nodes assigned to the location.
+ * @param {Boolean} [options.servers] List of servers in the location.
  */
-function getUser(ID, options) {
+
+module.exports = (ID, options) => {
     if (options == null || typeof options != "object") options = {};
+    if (ID == null) ID = 0;
 
     let cred = require('../Application').cred();
     let start = Date.now();
@@ -19,7 +22,7 @@ function getUser(ID, options) {
     let include = toIncludes(options);
 
     return new Promise(async (resolve, reject) => {
-        let res = await fetch(cred.url + "/api/application/users/" + ID + (include.length > 0 ? "?include=" + include.join(',') : ""), {
+        let res = await fetch(cred.url + "/api/application/locations/" + ID + (include.length > 0 ? "?include=" + include.join(',') : ""), {
             headers: {
                 "Content-Type": 'application/json',
                 "Authorization": 'Bearer ' + cred.APIKey,
@@ -40,5 +43,3 @@ function getUser(ID, options) {
         return resolve(toPush(data, start));
     });
 }
-
-module.exports = getUser;

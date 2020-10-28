@@ -3,7 +3,7 @@
 Open source pterodactyl API wrapper for JavaScript.
 
 ---
-
+Application:
 - [Features](#Features)
 - [Usage](#Usage)
   - [Logging In](#Logging-in) 
@@ -12,18 +12,23 @@ Open source pterodactyl API wrapper for JavaScript.
     - [servers](#Get-all-servers) 
     - [nodes](#Get-all-nodes) 
     - [nests](#Get-all-nests) 
+    - [locations](#Get-all-locations) 
   - [Get](#Get-a-user) 
     - [user](#Get-a-user) 
     - [server](#Get-a-server) 
     - [node](#Get-a-node) 
-    - [nest](#Get-a-nest) 
+    - [nest](#Get-a-nest)
+    - [location](#Get-a-location)
   - [Create](#Create-a-user) 
     - [user](#Create-a-user) 
     - [server](#Create-a-server)
   - [Delete](#Delete-a-user)
     - [user](#Delete-a-user)
     - [server](#Delete-a-server)
+  - [Update](#Update-a-user)
+    - [user](#Update-a-user)
 ---
+# Application:
 
 ### **Features:**
 ---
@@ -348,6 +353,51 @@ api.fetchNests().then(nests => console.log(nests));
 }
 ```
 </details>
+<br>
+
+## **Get all locations:** 
+ 
+#### <ins>`Code:`</ins>
+```js
+const api = require('nodeactyl.js').Application;
+
+api.login("PanelURL", "APIKey");
+
+api.fetchLocations().then(locations => console.log(locations));
+```
+#### <ins>`Expected response:`</ins>
+<details>
+<summary>
+<i>Click me!</i>
+</summary>
+
+```json
+{
+  "success": true,
+  "data": [
+    {
+      "id": 3,
+      "short": "US",
+      "long": "US LOCATION",
+      "updated_at": "2020-05-02T04:32:58+00:00",
+      "created_at": "2020-05-02T04:32:58+00:00"
+    },
+    {
+      "id": 5,
+      "short": "Gaming",
+      "long": "Gaming Nodes. EU and US",
+      "updated_at": "2020-08-10T12:56:38+00:00",
+      "created_at": "2020-08-10T12:56:38+00:00"
+    }
+  ],
+  "info": {
+    "total_amount": 2,
+    "startedAt": 1603840795885,
+    "endedAt": 1603840805135
+  }
+}
+```
+</details>
 
 --- 
 <br>
@@ -560,6 +610,41 @@ api.getNest(NESTID).then(nest => console.log(nest));
   }
 }
 ```
+</details><br>
+
+## **Get a location:** 
+ 
+#### <ins>`Code:`</ins>
+```js
+const api = require('nodeactyl.js').Application;
+
+api.login("PanelURL", "APIKey");
+
+api.getLocation(3).then(location => console.log(location));
+```
+#### <ins>`Expected response:`</ins>
+<details>
+<summary>
+<i>Click me!</i>
+</summary>
+
+```json
+{
+  "success": true,
+  "data": {
+    "id": 3,
+    "short": "US",
+    "long": "US LOCATION",
+    "updated_at": "2020-05-02T04:32:58+00:00",
+    "created_at": "2020-05-02T04:32:58+00:00"
+  },
+  "info": {
+    "total_amount": 1,
+    "startedAt": 1603840795885,
+    "endedAt": 1603840805135
+  }
+}
+```
 </details>
 
 ---
@@ -769,7 +854,7 @@ api.deletUser(USERID).then(response => console.log(response));
 ```
 </details> <br>
 
-## **Delete a server:**
+## **Update a user:**
  
 #### <ins>`Code:`</ins>
 ```js
@@ -777,7 +862,7 @@ const api = require('nodeactyl.js').Application;
 
 api.login("PanelURL", "APIKey");
 
-api.deleteServer(SERVERID).then(response => console.log(response));
+api.updateUser(SERVERID).then(response => console.log(response));
 ```
 #### <ins>`Expected response:`</ins>
 
@@ -789,7 +874,31 @@ api.deleteServer(SERVERID).then(response => console.log(response));
 ```json
 {
   "success": true,
-  "info": { "startedAt": 1603714948104, "endedAt": 1603714949005 }
+  "data": {
+    "id": 58,
+    "external_id": null,
+    "uuid": "8a8fd2a0-57e3-49f6-82ef-07c02c426be9",
+    "username": "example",
+    "email": "example@example.com",
+    "first_name": "Example",
+    "last_name": "User",
+    "language": "en",
+    "root_admin": false,
+    "2fa": false,
+    "created_at": "2020-04-22T09:47:03+00:00",
+    "updated_at": "2020-10-28T06:01:16+00:00"
+  },
+  "info": {
+    "total_amount": 1,
+    "startedAt": 1603864871881,
+    "endedAt": 1603864877319
+  }
 }
 ```
-</details> <br>
+</details>
+
+---
+<br>
+
+
+

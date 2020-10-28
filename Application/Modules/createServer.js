@@ -1,4 +1,5 @@
 const fetch = require('node-fetch');
+const { toPush } = require('../utils');
 /**
  * 
  * @param {String} ServerName Character limits: a-z A-Z 0-9 _ - . and [Space].
@@ -33,7 +34,7 @@ function createServer(ServerName, UserID, NestID, EggID, Location, RAM, Swap, Di
         if (DockerImage == null || StartupCmd == null) {
             let egg = await getNest(NestID);
             if (egg.errors != null) {
-                resolve({
+                return resolve({
                     success: false,
                     error: (data.errors.length == 1 ? data.errors[0] : data.errors),
                     info: {
@@ -87,7 +88,7 @@ function createServer(ServerName, UserID, NestID, EggID, Location, RAM, Swap, Di
 
         let data = await res.json();
         if (data.errors != null) {
-            resolve({
+            return resolve({
                 success: false,
                 error: (data.errors.length == 1 ? data.errors[0] : data.errors),
                 info: {
@@ -95,16 +96,9 @@ function createServer(ServerName, UserID, NestID, EggID, Location, RAM, Swap, Di
                     endedAt: Date.now(),
                 }
             });
-        } else resolve({
-            success: true,
-            data: data.attributes,
-            info: {
-                total_amount: 1,
-                startedAt: start,
-                endedAt: Date.now(),
-            }
-        });
+        } else return resolve(toPush(data, start));
     });
 
 }
+
 module.exports = createServer;

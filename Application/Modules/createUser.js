@@ -13,6 +13,7 @@ function createUser(Username, Password, Email, FirstName, LastName, IsAdmin, Lan
     let cred = require('../Application').cred();
     let start = Date.now();
 
+
     let input = {
         'username': Username,
         'email': Email,
@@ -36,7 +37,7 @@ function createUser(Username, Password, Email, FirstName, LastName, IsAdmin, Lan
 
         let data = await res.json();
         if (data.errors != null) {
-            resolve({
+            return resolve({
                 success: false,
                 error: (data.errors.length == 1 ? data.errors[0] : data.errors),
                 info: {
@@ -44,15 +45,7 @@ function createUser(Username, Password, Email, FirstName, LastName, IsAdmin, Lan
                     endedAt: Date.now(),
                 }
             });
-        } else resolve({
-            success: true,
-            data: data.attributes,
-            info: {
-                total_amount: 1,
-                startedAt: start,
-                endedAt: Date.now(),
-            }
-        });
+        } else return resolve(toPush(data, start))
     });
 }
 
