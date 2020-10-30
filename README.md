@@ -35,7 +35,7 @@ Application:
 
 * Create `servers` and `users`.
 * Delete `servers` and `users`.
-* Update `Users`.
+* Update `users`.
 * Get all `nodes`, `users`, `servers`, `nests`, `locations`.
 * Get an induvidual `node`, `user`, `server`, `nest`, `location`.
 #### *More features coming soon.*
@@ -67,7 +67,7 @@ const api = require('nodeactyl.js').Application;
 
 api.login("PanelURL", "APIKey");
 
-api.fetchUsers().then(users => console.log(users));
+api.fetchUsers(options).then(users => console.log(users));
 ```
 #### <ins>`Expected response:`</ins>
 <details>
@@ -236,7 +236,7 @@ const api = require('nodeactyl.js').Application;
 
 api.login("PanelURL", "APIKey");
 
-api.fetchNodes().then(nodes => console.log(nodes));
+api.fetchNodes(options).then(nodes => console.log(nodes));
 ```
 #### <ins>`Expected response:`</ins>
 <details>
@@ -317,7 +317,7 @@ const api = require('nodeactyl.js').Application;
 
 api.login("PanelURL", "APIKey");
 
-api.fetchNests().then(nests => console.log(nests));
+api.fetchNests(options).then(nests => console.log(nests));
 ```
 #### <ins>`Expected response:`</ins>
 <details>
@@ -364,7 +364,7 @@ const api = require('nodeactyl.js').Application;
 
 api.login("PanelURL", "APIKey");
 
-api.fetchLocations().then(locations => console.log(locations));
+api.fetchLocations(options).then(locations => console.log(locations));
 ```
 #### <ins>`Expected response:`</ins>
 <details>
@@ -411,7 +411,7 @@ const api = require('nodeactyl.js').Application;
 
 api.login("PanelURL", "APIKey");
 
-api.getUser(USERID).then(user => console.log(user));
+api.getUser(USERID, options).then(user => console.log(user));
 ```
 #### <ins>`Expected response:`</ins>
 <details>
@@ -456,7 +456,7 @@ const api = require('nodeactyl.js').Application;
 
 api.login("PanelURL", "APIKey");
 
-api.getServer(SERVERID).then(server => console.log(server));
+api.getServer(SERVERID, options).then(server => console.log(server));
 ```
 #### <ins>`Expected response:`</ins>
 <details>
@@ -525,7 +525,7 @@ const api = require('nodeactyl.js').Application;
 
 api.login("PanelURL", "APIKey");
 
-api.getNode(NODEID).then(node => console.log(node));
+api.getNode(NODEID, options).then(node => console.log(node));
 ```
 #### <ins>`Expected response:`</ins>
 
@@ -580,7 +580,7 @@ const api = require('nodeactyl.js').Application;
 
 api.login("PanelURL", "APIKey");
 
-api.getNest(NESTID).then(nest => console.log(nest));
+api.getNest(NESTID, options).then(nest => console.log(nest));
 ```
 #### <ins>`Expected response:`</ins>
 
@@ -621,7 +621,7 @@ const api = require('nodeactyl.js').Application;
 
 api.login("PanelURL", "APIKey");
 
-api.getLocation(3).then(location => console.log(location));
+api.getLocation(3, options).then(location => console.log(location));
 ```
 #### <ins>`Expected response:`</ins>
 <details>
@@ -920,6 +920,3 @@ api.updateUser(58, "example", "PASSWORD", "example@example.com", "Example", "Use
 
 ---
 <br>
-
-
-
