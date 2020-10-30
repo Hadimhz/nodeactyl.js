@@ -30,18 +30,19 @@ Application:
 ---
 # Application:
 
-### **Features:**
+### **Features**
 ---
 
 * Create `servers` and `users`.
 * Delete `servers` and `users`.
-* Get all `nodes`, `users`, `servers`, `eggs`.
-* Get an induvidual `node`, `user`, `server`, `egg`.
+* Update `Users`.
+* Get all `nodes`, `users`, `servers`, `nests`, `locations`.
+* Get an induvidual `node`, `user`, `server`, `nest`, `location`.
 #### *More features coming soon.*
 </br>
 
 
-### **Usage:**
+### **Usage**
 ---
 
 ## **Logging in:**
@@ -862,8 +863,28 @@ const api = require('nodeactyl.js').Application;
 
 api.login("PanelURL", "APIKey");
 
-api.updateUser(SERVERID).then(response => console.log(response));
+api.updateUser(58, "example", "PASSWORD", "example@example.com", "Example", "User", false, 'en').then(response => console.log(response));
 ```
+#### <ins>`Arguments:`</ins>
+<details>
+<summary>
+<i>Click me!</i>
+</summary>
+
+*List of arguments: (use in order)*
+| Argument | type | Description | Required? |
+| --- | --- | --- | --- |
+| UserID | Number | Users ID. | Yes |
+| Username | String | Users new username. (nullable) | Yes |
+| Password | String | Users new password. (nullable) | Yes |
+| Email | String | Users new email. (nullable) | Yes |
+| FirstName | String | Users new first name. (nullable) | Yes |
+| LastName | String | Users new last name. (nullable) | Yes |
+| IsAdmin | Boolean | Is the user admin? (true/false) (nullable) | Yes |
+| Language | String | Language, Normally: [en/fr] (nullable) | Yes |
+</details>
+<br>
+
 #### <ins>`Expected response:`</ins>
 
 <details>

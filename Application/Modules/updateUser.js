@@ -12,7 +12,7 @@ const { toPush } = require('../utils');
  * @param {Boolean} IsAdmin Is the user admin? (true/false)
  * @param {String} Language Language, Normally [en/fr]
  */
-async function  createUser(UserID, Username, Password, Email, FirstName, LastName, IsAdmin, Language) {
+async function createUser(UserID, Username, Password, Email, FirstName, LastName, IsAdmin, Language) {
     let cred = require('../Application').cred();
     let start = Date.now();
     let old = await getUser(UserID);
