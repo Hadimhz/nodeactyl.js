@@ -45,7 +45,7 @@ Application:
 ### **Usage**
 ---
 
-## **Logging in:**
+## **Logging in**
 
 ```js
 const api = require('nodeactyl.js').Application;
@@ -59,7 +59,7 @@ api.login("PanelURL", "APIKey");
 <br>
 
 
-## **Get all users:** 
+## **Get all users** 
  
 #### <ins>`Code:`</ins>
 ```js
@@ -116,7 +116,7 @@ api.fetchUsers(options).then(users => console.log(users));
 </details>
 <br>
 
-## **Get all servers:** 
+## **Get all servers** 
  
 #### <ins>`Code:`</ins>
 ```js
@@ -228,7 +228,7 @@ api.fetchServers().then(servers => console.log(servers));
 </details>
 <br>
 
-## **Get all nodes:** 
+## **Get all nodes** 
  
 #### <ins>`Code:`</ins>
 ```js
@@ -309,7 +309,7 @@ api.fetchNodes(options).then(nodes => console.log(nodes));
 </details>
 <br>
 
-## **Get all nests:** 
+## **Get all nests** 
  
 #### <ins>`Code:`</ins>
 ```js
@@ -356,7 +356,7 @@ api.fetchNests(options).then(nests => console.log(nests));
 </details>
 <br>
 
-## **Get all locations:** 
+## **Get all locations** 
  
 #### <ins>`Code:`</ins>
 ```js
@@ -403,7 +403,7 @@ api.fetchLocations(options).then(locations => console.log(locations));
 --- 
 <br>
 
-## **Get a user:**
+## **Get a user**
  
 #### <ins>`Code:`</ins>
 ```js
@@ -448,7 +448,7 @@ api.getUser(USERID, options).then(user => console.log(user));
 </details>
 <br>
 
-## **Get a server:**
+## **Get a server**
  
 #### <ins>`Code:`</ins>
 ```js
@@ -517,7 +517,7 @@ api.getServer(SERVERID, options).then(server => console.log(server));
 </details>
 <br>
 
-## **Get a node:**
+## **Get a node**
  
 #### <ins>`Code:`</ins>
 ```js
@@ -572,7 +572,7 @@ api.getNode(NODEID, options).then(node => console.log(node));
 </details>
 <br>
 
-## **Get a nest:**
+## **Get a nest**
  
 #### <ins>`Code:`</ins>
 ```js
@@ -613,7 +613,7 @@ api.getNest(NESTID, options).then(nest => console.log(nest));
 ```
 </details><br>
 
-## **Get a location:** 
+## **Get a location** 
  
 #### <ins>`Code:`</ins>
 ```js
@@ -651,7 +651,7 @@ api.getLocation(3, options).then(location => console.log(location));
 ---
 <br>
 
-## **Create a user:**
+## **Create a user**
  
 #### <ins>`Code:`</ins>
 ```js
@@ -713,7 +713,7 @@ api.createUser("example", "example", "example@example.com", "ExampleFirst", "Exa
 ```
 </details> <br>
 
-## **Create a server:**
+## **Create a server**
  
 #### <ins>`Code:`</ins>
 ```js
@@ -830,7 +830,7 @@ api.createServer("test", 2, 5, 16, 3, 0, -1, 0, 500, 0, null, null, {
 --- 
 <br>
 
-## **Delete a user:**
+## **Delete a user**
  
 #### <ins>`Code:`</ins>
 ```js
@@ -855,7 +855,7 @@ api.deletUser(USERID).then(response => console.log(response));
 ```
 </details> <br>
 
-## **Update a user:**
+## **Update a user**
  
 #### <ins>`Code:`</ins>
 ```js

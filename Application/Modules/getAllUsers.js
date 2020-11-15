@@ -1,4 +1,7 @@
-const { toIncludes, toPush } = require('../utils');
+const {
+    toIncludes,
+    toPush
+} = require('../utils');
 const fetch = require('node-fetch');
 
 /**
@@ -18,7 +21,7 @@ function getAllUsers(options) {
     let start = Date.now();
 
     let filter = ((options.filter != null && options.filter.key != null && options.filter.value != null) ? `filter[${options.filter.key}]=${options.filter.value}` : "")
-    
+
     let include = []
     if (options.include != null) {
         include = toIncludes(options.include);
@@ -50,7 +53,7 @@ function getAllUsers(options) {
         users = users.concat(data.data);
         if (data.meta.pagination.current_page != data.meta.pagination.total_pages && filter.length == 0) {
             for (let i = 2; i <= data.meta.pagination.total_pages; i++) {
-                fetch(cred.url + "/api/application/users?page=" + i, {
+                fetch(cred.url + "/api/application/users?page=" + i + (include.length > 0 ? `&include=${include.join(',')}` : ""), {
                     headers: {
                         "Content-Type": 'application/json',
                         "Authorization": 'Bearer ' + cred.APIKey,
@@ -58,8 +61,10 @@ function getAllUsers(options) {
                     }
                 }).then(x => x.json()).then(x => {
                     users = users.concat(x.data);
-                    if (x.meta.pagination.total == users.length)
-                        return resolve(users.toPush);
+                    console.log(i, x.data.length, users.length, x.meta.pagination.total)
+                    if (x.meta.pagination.total == users.length) {
+                        return resolve(toPush(users, start));
+                    }
                 });
             }
         } else
