@@ -838,7 +838,7 @@ const api = require('nodeactyl.js').Application;
 
 api.login("PanelURL", "APIKey");
 
-api.deletUser(USERID).then(response => console.log(response));
+api.deleteUser(USERID).then(response => console.log(response));
 ```
 #### <ins>`Expected response:`</ins>
 
