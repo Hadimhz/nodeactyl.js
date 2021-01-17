@@ -1,7 +1,4 @@
-const {
-    toIncludes,
-    toPush
-} = require('../utils');
+const { toIncludes, toPush } = require('../utils');
 const fetch = require('node-fetch');
 
 /**
@@ -61,7 +58,6 @@ function getAllUsers(options) {
                     }
                 }).then(x => x.json()).then(x => {
                     users = users.concat(x.data);
-                    console.log(i, x.data.length, users.length, x.meta.pagination.total)
                     if (x.meta.pagination.total == users.length) {
                         return resolve(toPush(users, start));
                     }

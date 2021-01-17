@@ -1,7 +1,5 @@
 const fetch = require('node-fetch');
-const {
-    toPush
-} = require('../utils');
+const { toPush } = require('../utils');
 
 /**
  * @param {Object}  [options] 

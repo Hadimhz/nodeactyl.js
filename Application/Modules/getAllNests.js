@@ -1,4 +1,4 @@
-const { toIncludes, toPush} = require('../utils');
+const { toIncludes, toPush } = require('../utils');
 const fetch = require('node-fetch');
 
 /**

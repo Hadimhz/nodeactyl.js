@@ -1,8 +1,5 @@
 const fetch = require('node-fetch');
-const {
-    toPush,
-    toIncludes
-} = require('../utils');
+const { toPush, toIncludes } = require('../utils');
 
 /**
  * 

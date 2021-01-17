@@ -1,10 +1,10 @@
 const fetch = require('node-fetch');
-const { toIncludes, toPush} = require('../utils');
+const { toPush } = require('../utils');
 
 function getAllServers() {
     let cred = require('../Application').cred();
     let start = Date.now();
-    
+
     return new Promise(async (resolve, reject) => {
         let servers = []
         let res = await fetch(cred.url + "/api/application/servers", {
@@ -36,16 +36,24 @@ function getAllServers() {
                         "Accept": 'application/json'
                     }
                 }).then(x => x.json()).then(x => {
+                    if (x.errors != null) {
+                        return resolve({
+                            success: false,
+                            error: (x.errors.length == 1 ? x.errors[0] : x.errors),
+                            info: {
+                                startedAt: start,
+                                endedAt: Date.now(),
+                            }
+                        });
+                    };
                     servers = servers.concat(x.data);
-                    if (x.meta.pagination.total == servers.length)
+                    if (x.meta.pagination.total == servers.length) {
                         return resolve(toPush(servers, start));
+                    }
                 });
             }
-        } else 
+        } else
             return resolve(toPush(servers, start));
-        
-
-
     });
 }
 module.exports = getAllServers;

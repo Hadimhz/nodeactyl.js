@@ -9,12 +9,12 @@ const { toIncludes, toPush } = require('../utils');
  * */
 
 function getAllLocations(options) {
-    if(options == null || (typeof options) != "object") options = {};
+    if (options == null || (typeof options) != "object") options = {};
 
 
     let cred = require('../Application').cred();
     let start = Date.now();
-    
+
     let include = toIncludes(options);
 
 
@@ -54,9 +54,9 @@ function getAllLocations(options) {
                         return resolve(toPush(locations, start));
                 });
             }
-        } else 
+        } else
             return resolve(toPush(locations, start));
-        
+
     });
 }
 
