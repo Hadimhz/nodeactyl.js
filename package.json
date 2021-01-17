@@ -1,6 +1,6 @@
 {
   "name": "nodeactyl.js",
-  "version": "0.4.3",
+  "version": "0.4.4",
   "description": "API wrapper for Pterodactyl.",
   "main": "index.js",
   "scripts": {
